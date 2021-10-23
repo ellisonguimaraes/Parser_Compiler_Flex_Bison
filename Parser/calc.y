@@ -1,11 +1,20 @@
 %{
+#include "DataStructure.c"
 #include <math.h>
 #include <stdio.h>
-#define YYSTYPE double
 
 int yyerror (char const *s);
 extern int yylex (void);
+
+double memory[100];
 %}
+
+
+%union
+{
+	double value;
+	char lexeme[50];
+};
 
 %token NUMBER VAR
 %token ATTR
@@ -17,6 +26,9 @@ extern int yylex (void);
 %token LBRACKET RBRACKET
 %token SEPARATOR
 %token EOL
+
+%type <lexeme> VAR
+%type <value> NUMBER
 
 %left ATTR
 %left VAR
@@ -38,43 +50,53 @@ Input:
 
 Line:	
 	EOL
-	| Assign EOL { printf("Atribuição: %f\n", $1); };
-	| Rel EOL {printf("Relação: %f\n", $1); };
-	| Logical EOL {printf("Logica: %f\n", $1); };
+	| Assign EOL { printf("Atribuição: %f\n", $<value>1); };
+	| Rel EOL { printf("Relação: %f\n", $<value>1); };
+	| Logical EOL { printf("Logica: %f\n", $<value>1); };
+	| VAR EOL { printf("O valor de %s: %f\n", $<lexeme>1, GetData($<lexeme>1)); };
 
 Assign:
-	VAR ATTR Expr { $$ = $3; }; // Ação semântica para armazenar (se n estiver na tabela) ou atualizar (se estiver)
+	VAR ATTR Expr {
+			$<value>$ = $<value>3;
+			// Verificando se foi retornado algum dado com base no lexeme.
+			int result = GetData($<lexeme>1);
+			if (result < 0) {
+				AddData($<lexeme>1, $<value>3);
+			} else {
+				UpdateData($<lexeme>1, $<value>3);
+			}
+		};
 
 Rel:
-	Expr { $$ = $1; };
-	| Rel MORE Rel { $$ = $1 > $3; printf("%f > %f\n", $1, $3); };
-	| Rel MOREOREQUAL Rel { $$ = $1 >= $3; printf("%f >= %f\n", $1, $3); };
-	| Rel LESS Rel { $$ = $1 < $3; printf("%f < %f\n", $1, $3); };
-	| Rel LESSOREQUAL Rel { $$ = $1 <= $3; printf("%f <= %f\n", $1, $3); };
-	| Rel EQUAL Rel { $$ = $1 == $3; printf("%f == %f\n", $1, $3); };
-	| Rel DIFF Rel { $$ = $1 != $3; printf("%f != %f\n", $1, $3); };
+	Expr { $<value>$ = $<value>1; };
+	| Rel MORE Rel { $<value>$ = $<value>1 > $<value>3; printf("%f > %f\n", $<value>1, $<value>3); };
+	| Rel MOREOREQUAL Rel { $<value>$ = $<value>1 >= $<value>3; printf("%f >= %f\n", $<value>1, $<value>3); };
+	| Rel LESS Rel { $<value>$ = $<value>1 < $<value>3; printf("%f < %f\n", $<value>1, $<value>3); };
+	| Rel LESSOREQUAL Rel { $<value>$ = $<value>1 <= $<value>3; printf("%f <= %f\n", $<value>1, $<value>3); };
+	| Rel EQUAL Rel { $<value>$ = $<value>1 == $<value>3; printf("%f == %f\n", $<value>1, $<value>3); };
+	| Rel DIFF Rel { $<value>$ = $<value>1 != $<value>3; printf("%f != %f\n", $<value>1, $<value>3); };
 
 Logical:
-	Expr { $$ = $1; };
-	| Rel { $$ = $1; };
-	| Logical OR Logical { $$ = $1 || $3; printf("%f || %f\n", $1, $3); };
-	| Logical E Logical { $$ = $1 && $3; printf("%f && %f\n", $1, $3); };
-	| Logical EXCLUSIVEOR Logical { $$ = !!$1 ^ !!$3; printf("%f XOR %f\n", $1, $3); };	// !!p = p
-	| Logical IMPLICATION Logical { $$ = !$1 || !!$3; printf("%f -> %f\n", $1, $3); }; 	// p -> q = ~p v q
-	| NOT Logical { $$ = !$2; printf("!%f\n", $2); };
+	Expr { $<value>$ = $<value>1; };
+	| Rel { $<value>$ = $<value>1; };
+	| Logical OR Logical { $<value>$ = $<value>1 || $<value>3; printf("%f || %f\n", $<value>1, $<value>3); };
+	| Logical E Logical { $<value>$ = $<value>1 && $<value>3; printf("%f && %f\n", $<value>1, $<value>3); };
+	| Logical EXCLUSIVEOR Logical { $<value>$ = !!$<value>1 ^ !!$<value>3; printf("%f XOR %f\n", $<value>1, $<value>3); };	// !!p = p
+	| Logical IMPLICATION Logical { $<value>$ = !$<value>1 || !!$<value>3; printf("%f -> %f\n", $<value>1, $<value>3); }; 	// p -> q = ~p v q
+	| NOT Logical { $<value>$ = !$<value>2; printf("!%f\n", $<value>2); };
 
-
-Expr: 
-	NUMBER { $$=$1; };
-	| Expr ADD Expr { $$ = $1 + $3; printf("%f + %f\n", $1, $3); };
-	| Expr SUB Expr { $$ = $1 - $3; printf("%f - %f\n", $1, $3); };
-	| Expr MUL Expr { $$ = $1 * $3; printf("%f * %f\n", $1, $3); };
-	| Expr DIV Expr { $$ = $1 / $3; printf("%f / %f\n", $1, $3); };
-	| SUB Expr %prec NEG { $$ = -$2; printf("- %f\n", $2); };
-	| Expr POW Expr { $$ = pow($1, $3); printf("%f ^ %f\n", $1, $3); };
-	| LOG LBRACKET Expr SEPARATOR Expr RBRACKET { $$ = log10($3)/log10($5); printf("Log de %f na base %f\n", $3, $5); };
-	| SQRT LBRACKET Expr SEPARATOR Expr RBRACKET { $$ = pow($3, 1/$5); printf("Raiz (indice: %f) de %f\n", $5, $3); };
-	| LBRACKET Expr RBRACKET { $$ = $2; };
+Expr:
+	VAR { $<value>$ = GetData($<lexeme>1); }; // fazer verificação se não achar dar error.
+	| NUMBER { $<value>$=$<value>1; };
+	| Expr ADD Expr { $<value>$ = $<value>1 + $<value>3; printf("%f + %f\n", $<value>1, $<value>3); };
+	| Expr SUB Expr { $<value>$ = $<value>1 - $<value>3; printf("%f - %f\n", $<value>1, $<value>3); };
+	| Expr MUL Expr { $<value>$ = $<value>1 * $<value>3; printf("%f * %f\n", $<value>1, $<value>3); };
+	| Expr DIV Expr { $<value>$ = $<value>1 / $<value>3; printf("%f / %f\n", $<value>1, $<value>3); };
+	| SUB Expr %prec NEG { $<value>$ = -$<value>2; printf("- %f\n", $<value>2); };
+	| Expr POW Expr { $<value>$ = pow($<value>1, $<value>3); printf("%f ^ %f\n", $<value>1, $<value>3); };
+	| LOG LBRACKET Expr SEPARATOR Expr RBRACKET { $<value>$ = log10($<value>3)/log10($<value>5); printf("Log de %f na base %f\n", $<value>3, $<value>5); };
+	| SQRT LBRACKET Expr SEPARATOR Expr RBRACKET { $<value>$ = pow($<value>3, 1/$<value>5); printf("Raiz (indice: %f) de %f\n", $<value>5, $<value>3); };
+	| LBRACKET Expr RBRACKET { $<value>$ = $<value>2; };
 
 %%
 
