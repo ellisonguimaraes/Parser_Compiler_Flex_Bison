@@ -82,7 +82,7 @@ extern int yydebug;
 #if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
 union YYSTYPE
 {
-#line 14 "calc.y"
+#line 11 "calc.y"
 
 	double value;
 	char lexeme[50];

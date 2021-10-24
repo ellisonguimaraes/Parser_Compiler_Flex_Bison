@@ -1,5 +1,5 @@
 %{
-#include "DataStructure.c"
+#include "StructureVariable.c"
 #include <math.h>
 #include <stdio.h>
 
@@ -50,18 +50,19 @@ Line:
 	| Assign EOL { printf("Atribuição: %f\n", $<value>1); };
 	| Rel EOL { printf("Relação: %f\n", $<value>1); };
 	| Logical EOL { printf("Logica: %f\n", $<value>1); };
-	//| VAR EOL {};
+	| SEPARATOR EOL { ShowAllVar(); };
+	
 
 Assign:
 	VAR ATTR Expr {
 			$<value>$ = $<value>3;
 
 			// Verificando se foi retornado algum dado com base no lexeme.
-			Variable* var = GetData($<lexeme>1);
+			Variable* var = GetVar($<lexeme>1);
 			if (var == NULL) {
-				AddData($<lexeme>1, $<value>3);
+				AddVar($<lexeme>1, $<value>3);
 			} else {
-				UpdateData($<lexeme>1, $<value>3);
+				UpdateVar($<lexeme>1, $<value>3);
 			}
 		};
 
@@ -85,7 +86,7 @@ Logical:
 
 Expr:
 	VAR { 
-			Variable* var = GetData($<lexeme>1);
+			Variable* var = GetVar($<lexeme>1);
 			if (var != NULL) {
 				$<value>$ = var->value;
 			} else {
