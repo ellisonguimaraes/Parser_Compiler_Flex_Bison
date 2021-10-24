@@ -17,20 +17,22 @@ void AddData(char lexeme[50], double value)
     final_index++;
 }
 
-double GetData(char lexeme[50])
+Variable* GetData(char lexeme[50])
 {
-    double valuebylexeme = -1.0;
+    Variable* variable = NULL;
 
     for(int i = 0; i < 50; i++)
     {
         if(!strcmp(lexemes[i], lexeme))
         {
-            valuebylexeme = values[i];
+            variable = (Variable*)malloc(sizeof(Variable));
+            strcpy(variable->lexeme, lexemes[i]);
+            variable->value = values[i];
             break;
         }
     }
 
-    return valuebylexeme;
+    return variable;
 }
 
 void UpdateData(char lexeme[50], double value)

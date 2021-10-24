@@ -5,10 +5,7 @@
 
 int yyerror (char const *s);
 extern int yylex (void);
-
-double memory[100];
 %}
-
 
 %union
 {
@@ -53,14 +50,15 @@ Line:
 	| Assign EOL { printf("Atribuição: %f\n", $<value>1); };
 	| Rel EOL { printf("Relação: %f\n", $<value>1); };
 	| Logical EOL { printf("Logica: %f\n", $<value>1); };
-	| VAR EOL { printf("O valor de %s: %f\n", $<lexeme>1, GetData($<lexeme>1)); };
+	//| VAR EOL {};
 
 Assign:
 	VAR ATTR Expr {
 			$<value>$ = $<value>3;
+
 			// Verificando se foi retornado algum dado com base no lexeme.
-			int result = GetData($<lexeme>1);
-			if (result < 0) {
+			Variable* var = GetData($<lexeme>1);
+			if (var == NULL) {
 				AddData($<lexeme>1, $<value>3);
 			} else {
 				UpdateData($<lexeme>1, $<value>3);
@@ -86,7 +84,18 @@ Logical:
 	| NOT Logical { $<value>$ = !$<value>2; printf("!%f\n", $<value>2); };
 
 Expr:
-	VAR { $<value>$ = GetData($<lexeme>1); }; // fazer verificação se não achar dar error.
+	VAR { 
+			Variable* var = GetData($<lexeme>1);
+			if (var != NULL) {
+				$<value>$ = var->value;
+			} else {
+				char strerror[100] = "A variável '";
+				strcat(strerror, $<lexeme>1);
+				strcat(strerror, "' NÃO foi declarada.");
+				yyerror(strerror);
+				YYABORT;
+			}	
+		};
 	| NUMBER { $<value>$=$<value>1; };
 	| Expr ADD Expr { $<value>$ = $<value>1 + $<value>3; printf("%f + %f\n", $<value>1, $<value>3); };
 	| Expr SUB Expr { $<value>$ = $<value>1 - $<value>3; printf("%f - %f\n", $<value>1, $<value>3); };
