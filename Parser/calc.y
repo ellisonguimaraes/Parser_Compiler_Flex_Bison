@@ -58,6 +58,7 @@ extern int yylex (void);
 %left NUMBER 
 %left VAR
 %left NEG
+%left NOT
 %left LBRACKET RBRACKET
 
 %define parse.error verbose
@@ -166,7 +167,7 @@ LogicExpr:
 	| LogicExpr EXCLUSIVEOR LogicExpr { $<value>$ = !!$<value>1 ^ !!$<value>3; printf("%f XOR %f\n", $<value>1, $<value>3); };	// !!p = p
 	| LogicExpr IMPLICATION LogicExpr { $<value>$ = !$<value>1 || !!$<value>3; printf("%f -> %f\n", $<value>1, $<value>3); }; 	// p -> q = ~p v q
 	| NOT LogicExpr { $<value>$ = !$<value>2; printf("!%f\n", $<value>2); };
-	| LBRACKET LogicExpr RBRACKET { $<value>$ = $<value>2; printf("(%f)\n", $<value>2); };
+	| LBRACKET LogicExpr RBRACKET { $<value>$ = $<value>2; printf("L(%f)\n", $<value>2); };
 
 RelExpr:
 	Expr { $<value>$ = $<value>1; };
@@ -176,7 +177,7 @@ RelExpr:
 	| RelExpr MORE RelExpr { $<value>$ = $<value>1 > $<value>3; printf("%f > %f\n", $<value>1, $<value>3); };
 	| RelExpr LESSOREQUAL RelExpr { $<value>$ = $<value>1 <= $<value>3; printf("%f <= %f\n", $<value>1, $<value>3); };
 	| RelExpr LESS RelExpr { $<value>$ = $<value>1 < $<value>3; printf("%f < %f\n", $<value>1, $<value>3); };
-	| LBRACKET RelExpr RBRACKET { $<value>$ = $<value>2; printf("(%f)\n", $<value>2); };
+	| LBRACKET RelExpr RBRACKET { $<value>$ = $<value>2; printf("R(%f)\n", $<value>2); };
 
 Expr:
 	NUMBER { $<value>$=$<value>1; };

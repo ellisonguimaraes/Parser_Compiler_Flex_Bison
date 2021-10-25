@@ -547,11 +547,11 @@ static const yytype_int8 yytranslate[] =
   /* YYRLINE[YYN] -- Source line where rule number YYN was defined.  */
 static const yytype_uint8 yyrline[] =
 {
-       0,    71,    71,    73,    76,    77,    78,    79,    80,    81,
-      84,    95,   107,   119,   131,   143,   157,   158,   159,   160,
-     161,   162,   163,   164,   167,   168,   169,   170,   171,   172,
-     173,   174,   177,   178,   190,   191,   192,   193,   194,   195,
-     196,   197,   198,   199
+       0,    72,    72,    74,    77,    78,    79,    80,    81,    82,
+      85,    98,   113,   125,   137,   149,   163,   164,   165,   166,
+     167,   168,   169,   170,   173,   174,   175,   176,   177,   178,
+     179,   180,   183,   184,   199,   200,   201,   202,   203,   204,
+     205,   206,   207,   208
 };
 #endif
 
@@ -597,13 +597,13 @@ static const yytype_int16 yypact[] =
 {
      -34,    31,   -34,   -33,   103,   -26,   -25,   181,   -34,   178,
      181,   -34,   -34,   -24,    69,    -3,    65,   -34,   -34,   103,
-      -7,   103,   103,    43,   210,   176,   103,   103,   103,   103,
+      -7,   103,   103,   -34,   210,   176,   103,   103,   103,   103,
      103,   103,    98,   135,    94,   -34,   181,   181,   181,   181,
      -34,   191,   191,   191,   191,   191,   191,   -34,   103,   103,
      103,   103,   103,   103,   -34,   136,   117,   123,   211,   211,
      211,   211,   211,   211,   -34,   -34,   -34,    10,    -9,   -34,
-     -34,   191,    55,   211,    55,   -34,   -34,   -34,   -34,   148,
-     148,    -7,    -7,    -7,   211,   103,   103,   135,   136,   142,
+     -34,   191,    37,   211,    37,   -34,   -34,   -34,   -34,    49,
+      49,    -7,    -7,    -7,   211,   103,   103,   135,   136,   142,
      156,   -34,   -34
 };
 
@@ -646,9 +646,9 @@ static const yytype_int8 yytable[] =
       56,    57,    37,    38,    39,    58,    59,    60,    61,    62,
       63,     2,    47,     0,     3,    25,    25,    25,    25,     0,
        0,    72,    74,    75,    76,    77,    78,    79,    80,    81,
-      82,    83,    84,     4,    36,    37,    38,    39,     5,     6,
+      82,    83,    84,     4,    43,    44,    45,    46,     5,     6,
        7,     8,     9,     0,    10,    23,    11,     0,    32,     0,
-      88,    87,    43,    44,    45,    46,   -16,   -16,   -16,   -16,
+      88,    87,    50,    51,    52,    53,   -16,   -16,   -16,   -16,
       36,    37,    38,    39,    89,    90,    48,    49,    50,    51,
       52,    53,     0,     0,    67,    68,    69,    70,     0,     0,
       54,     0,     0,     0,    40,   -16,   -16,   -16,   -16,    36,
@@ -658,7 +658,7 @@ static const yytype_int8 yytable[] =
       50,    51,    52,    53,    48,    49,    50,    51,    52,    53,
       41,    42,    43,    44,    45,    46,     0,    48,    49,    50,
       51,    52,    53,    48,    49,    50,    51,    52,    53,    65,
-      66,    50,    51,    52,    53,     0,    91,    48,    49,    50,
+      66,     0,     0,     0,     0,     0,    91,    48,    49,    50,
       51,    52,    53,    26,    27,    28,    29,    30,    31,     0,
       92,   -24,   -24,   -24,   -24,   -24,   -24,    48,    49,    50,
       51,    52,    53,     4,     0,     0,     0,     0,     5,     6,
@@ -674,9 +674,9 @@ static const yytype_int8 yycheck[] =
       21,    22,    12,    13,    14,    26,    27,    28,    29,    30,
       31,     0,    35,    -1,     3,    36,    37,    38,    39,    -1,
       -1,    41,    42,    43,    44,    45,    46,    48,    49,    50,
-      51,    52,    53,    22,    11,    12,    13,    14,    27,    28,
+      51,    52,    53,    22,    17,    18,    19,    20,    27,    28,
       29,    30,    31,    -1,    33,     7,    35,    -1,    10,    -1,
-      71,    71,    17,    18,    19,    20,    11,    12,    13,    14,
+      71,    71,    23,    24,    25,    26,    11,    12,    13,    14,
       11,    12,    13,    14,    85,    86,    21,    22,    23,    24,
       25,    26,    -1,    -1,    36,    37,    38,    39,    -1,    -1,
       35,    -1,    -1,    -1,    35,    11,    12,    13,    14,    11,
@@ -686,7 +686,7 @@ static const yytype_int8 yycheck[] =
       23,    24,    25,    26,    21,    22,    23,    24,    25,    26,
       15,    16,    17,    18,    19,    20,    -1,    21,    22,    23,
       24,    25,    26,    21,    22,    23,    24,    25,    26,    34,
-      34,    23,    24,    25,    26,    -1,    34,    21,    22,    23,
+      34,    -1,    -1,    -1,    -1,    -1,    34,    21,    22,    23,
       24,    25,    26,     5,     6,     7,     8,     9,    10,    -1,
       34,    15,    16,    17,    18,    19,    20,    21,    22,    23,
       24,    25,    26,    22,    -1,    -1,    -1,    -1,    27,    28,
@@ -1424,70 +1424,75 @@ yyreduce:
   switch (yyn)
     {
   case 5:
-#line 77 "calc.y"
+#line 78 "calc.y"
                      { printf("Atribuição: %f\n", (yyvsp[-1].value)); }
 #line 1430 "calc.tab.c"
     break;
 
   case 6:
-#line 78 "calc.y"
+#line 79 "calc.y"
                    { printf("Expressão: %f\n", (yyvsp[-1].value)); }
 #line 1436 "calc.tab.c"
     break;
 
   case 7:
-#line 79 "calc.y"
+#line 80 "calc.y"
                       { printf("Relação: %f\n", (yyvsp[-1].value)); }
 #line 1442 "calc.tab.c"
     break;
 
   case 8:
-#line 80 "calc.y"
+#line 81 "calc.y"
                         { printf("Logica: %f\n", (yyvsp[-1].value)); }
 #line 1448 "calc.tab.c"
     break;
 
   case 9:
-#line 81 "calc.y"
+#line 82 "calc.y"
                        { ShowAllVar(); }
 #line 1454 "calc.tab.c"
     break;
 
   case 10:
-#line 84 "calc.y"
+#line 85 "calc.y"
                       {
 			(yyval.value) = (yyvsp[0].value);
 
-			// Verificando se foi retornado algum dado com base no lexeme.
+			// Busca na lista se o Lexeme já existe
 			Variable* var = GetVar((yyvsp[-2].lexeme));
 			if (var == NULL) {
+				// Se não existir, salvamos o Lexeme e seu valor
 				AddVar((yyvsp[-2].lexeme), (yyvsp[0].value));
 			} else {
+				// Se existir somente atualizamos
 				UpdateVar((yyvsp[-2].lexeme), (yyvsp[0].value));
 			}
 		}
-#line 1470 "calc.tab.c"
+#line 1472 "calc.tab.c"
     break;
 
   case 11:
-#line 95 "calc.y"
+#line 98 "calc.y"
                            {
+			// Busca na lista se o Lexeme já existe
 			Variable* var = GetVar((yyvsp[-2].lexeme));
 
 			if (var == NULL) {
+				// Se não existir é retornado um erro
 				char strerror[100] = "A variável '"; strcat(strerror, (yyvsp[-2].lexeme)); strcat(strerror, "' NÃO foi declarada.");
 				yyerror(strerror); YYABORT;
 			} else {
+				// Se existir atribuimos o novo valor a ele
 				double result = var->value + (yyvsp[0].value);
 				UpdateVar((yyvsp[-2].lexeme), result);
 				(yyval.value) = result;
 			}
 		}
-#line 1487 "calc.tab.c"
+#line 1492 "calc.tab.c"
     break;
 
   case 12:
-#line 107 "calc.y"
+#line 113 "calc.y"
                            {
 			Variable* var = GetVar((yyvsp[-2].lexeme));
 
@@ -1500,11 +1505,11 @@ yyreduce:
 				(yyval.value) = result;
 			}
 		}
-#line 1504 "calc.tab.c"
+#line 1509 "calc.tab.c"
     break;
 
   case 13:
-#line 119 "calc.y"
+#line 125 "calc.y"
                            {
 			Variable* var = GetVar((yyvsp[-2].lexeme));
 
@@ -1517,11 +1522,11 @@ yyreduce:
 				(yyval.value) = result;
 			}
 		}
-#line 1521 "calc.tab.c"
+#line 1526 "calc.tab.c"
     break;
 
   case 14:
-#line 131 "calc.y"
+#line 137 "calc.y"
                            {
 			Variable* var = GetVar((yyvsp[-2].lexeme));
 
@@ -1534,11 +1539,11 @@ yyreduce:
 				(yyval.value) = result;
 			}
 		}
-#line 1538 "calc.tab.c"
+#line 1543 "calc.tab.c"
     break;
 
   case 15:
-#line 143 "calc.y"
+#line 149 "calc.y"
                            {
 			Variable* var = GetVar((yyvsp[-2].lexeme));
 
@@ -1551,118 +1556,121 @@ yyreduce:
 				(yyval.value) = result;
 			}
 		}
-#line 1555 "calc.tab.c"
+#line 1560 "calc.tab.c"
     break;
 
   case 16:
-#line 157 "calc.y"
+#line 163 "calc.y"
              { (yyval.value) = (yyvsp[0].value); }
-#line 1561 "calc.tab.c"
+#line 1566 "calc.tab.c"
     break;
 
   case 17:
-#line 158 "calc.y"
+#line 164 "calc.y"
                   { (yyval.value) = (yyvsp[0].value); }
-#line 1567 "calc.tab.c"
+#line 1572 "calc.tab.c"
     break;
 
   case 18:
-#line 159 "calc.y"
+#line 165 "calc.y"
                                  { (yyval.value) = (yyvsp[-2].value) || (yyvsp[0].value); printf("%f || %f\n", (yyvsp[-2].value), (yyvsp[0].value)); }
-#line 1573 "calc.tab.c"
+#line 1578 "calc.tab.c"
     break;
 
   case 19:
-#line 160 "calc.y"
+#line 166 "calc.y"
                                 { (yyval.value) = (yyvsp[-2].value) && (yyvsp[0].value); printf("%f && %f\n", (yyvsp[-2].value), (yyvsp[0].value)); }
-#line 1579 "calc.tab.c"
+#line 1584 "calc.tab.c"
     break;
 
   case 20:
-#line 161 "calc.y"
+#line 167 "calc.y"
                                           { (yyval.value) = !!(yyvsp[-2].value) ^ !!(yyvsp[0].value); printf("%f XOR %f\n", (yyvsp[-2].value), (yyvsp[0].value)); }
-#line 1585 "calc.tab.c"
+#line 1590 "calc.tab.c"
     break;
 
   case 21:
-#line 162 "calc.y"
+#line 168 "calc.y"
                                           { (yyval.value) = !(yyvsp[-2].value) || !!(yyvsp[0].value); printf("%f -> %f\n", (yyvsp[-2].value), (yyvsp[0].value)); }
-#line 1591 "calc.tab.c"
+#line 1596 "calc.tab.c"
     break;
 
   case 22:
-#line 163 "calc.y"
+#line 169 "calc.y"
                         { (yyval.value) = !(yyvsp[0].value); printf("!%f\n", (yyvsp[0].value)); }
-#line 1597 "calc.tab.c"
+#line 1602 "calc.tab.c"
     break;
 
   case 23:
-#line 164 "calc.y"
-                                      { (yyval.value) = (yyvsp[-1].value); printf("(%f)\n", (yyvsp[-1].value)); }
-#line 1603 "calc.tab.c"
+#line 170 "calc.y"
+                                      { (yyval.value) = (yyvsp[-1].value); printf("L(%f)\n", (yyvsp[-1].value)); }
+#line 1608 "calc.tab.c"
     break;
 
   case 24:
-#line 167 "calc.y"
+#line 173 "calc.y"
              { (yyval.value) = (yyvsp[0].value); }
-#line 1609 "calc.tab.c"
+#line 1614 "calc.tab.c"
     break;
 
   case 25:
-#line 168 "calc.y"
+#line 174 "calc.y"
                                { (yyval.value) = (yyvsp[-2].value) != (yyvsp[0].value); printf("%f != %f\n", (yyvsp[-2].value), (yyvsp[0].value)); }
-#line 1615 "calc.tab.c"
+#line 1620 "calc.tab.c"
     break;
 
   case 26:
-#line 169 "calc.y"
+#line 175 "calc.y"
                                 { (yyval.value) = (yyvsp[-2].value) == (yyvsp[0].value); printf("%f == %f\n", (yyvsp[-2].value), (yyvsp[0].value)); }
-#line 1621 "calc.tab.c"
+#line 1626 "calc.tab.c"
     break;
 
   case 27:
-#line 170 "calc.y"
+#line 176 "calc.y"
                                       { (yyval.value) = (yyvsp[-2].value) >= (yyvsp[0].value); printf("%f >= %f\n", (yyvsp[-2].value), (yyvsp[0].value)); }
-#line 1627 "calc.tab.c"
+#line 1632 "calc.tab.c"
     break;
 
   case 28:
-#line 171 "calc.y"
+#line 177 "calc.y"
                                { (yyval.value) = (yyvsp[-2].value) > (yyvsp[0].value); printf("%f > %f\n", (yyvsp[-2].value), (yyvsp[0].value)); }
-#line 1633 "calc.tab.c"
+#line 1638 "calc.tab.c"
     break;
 
   case 29:
-#line 172 "calc.y"
+#line 178 "calc.y"
                                       { (yyval.value) = (yyvsp[-2].value) <= (yyvsp[0].value); printf("%f <= %f\n", (yyvsp[-2].value), (yyvsp[0].value)); }
-#line 1639 "calc.tab.c"
+#line 1644 "calc.tab.c"
     break;
 
   case 30:
-#line 173 "calc.y"
+#line 179 "calc.y"
                                { (yyval.value) = (yyvsp[-2].value) < (yyvsp[0].value); printf("%f < %f\n", (yyvsp[-2].value), (yyvsp[0].value)); }
-#line 1645 "calc.tab.c"
+#line 1650 "calc.tab.c"
     break;
 
   case 31:
-#line 174 "calc.y"
-                                    { (yyval.value) = (yyvsp[-1].value); printf("(%f)\n", (yyvsp[-1].value)); }
-#line 1651 "calc.tab.c"
+#line 180 "calc.y"
+                                    { (yyval.value) = (yyvsp[-1].value); printf("R(%f)\n", (yyvsp[-1].value)); }
+#line 1656 "calc.tab.c"
     break;
 
   case 32:
-#line 177 "calc.y"
+#line 183 "calc.y"
                { (yyval.value)=(yyvsp[0].value); }
-#line 1657 "calc.tab.c"
+#line 1662 "calc.tab.c"
     break;
 
   case 33:
-#line 178 "calc.y"
+#line 184 "calc.y"
               { 
+			// Busca na lista se o Lexeme já existe
 			Variable* var = GetVar((yyvsp[0].lexeme));
 			if (var != NULL) {
+				// Se resistir ele é retornado
 				(yyval.value) = var->value;
 			} else {
+				// Se não existir ocorre um erro
 				char strerror[100] = "A variável '";
 				strcat(strerror, (yyvsp[0].lexeme));
 				strcat(strerror, "' NÃO foi declarada.");
@@ -1670,71 +1678,71 @@ yyreduce:
 				YYABORT;
 			}	
 		}
-#line 1674 "calc.tab.c"
+#line 1682 "calc.tab.c"
     break;
 
   case 34:
-#line 190 "calc.y"
+#line 199 "calc.y"
                         { (yyval.value) = (yyvsp[-2].value) + (yyvsp[0].value); printf("%f + %f\n", (yyvsp[-2].value), (yyvsp[0].value)); }
-#line 1680 "calc.tab.c"
+#line 1688 "calc.tab.c"
     break;
 
   case 35:
-#line 191 "calc.y"
+#line 200 "calc.y"
                         { (yyval.value) = (yyvsp[-2].value) - (yyvsp[0].value); printf("%f - %f\n", (yyvsp[-2].value), (yyvsp[0].value)); }
-#line 1686 "calc.tab.c"
+#line 1694 "calc.tab.c"
     break;
 
   case 36:
-#line 192 "calc.y"
+#line 201 "calc.y"
                         { (yyval.value) = (yyvsp[-2].value) * (yyvsp[0].value); printf("%f * %f\n", (yyvsp[-2].value), (yyvsp[0].value)); }
-#line 1692 "calc.tab.c"
+#line 1700 "calc.tab.c"
     break;
 
   case 37:
-#line 193 "calc.y"
+#line 202 "calc.y"
                         { (yyval.value) = (yyvsp[-2].value) / (yyvsp[0].value); printf("%f / %f\n", (yyvsp[-2].value), (yyvsp[0].value)); }
-#line 1698 "calc.tab.c"
+#line 1706 "calc.tab.c"
     break;
 
   case 38:
-#line 194 "calc.y"
+#line 203 "calc.y"
                         { (yyval.value) = (int)(yyvsp[-2].value) % (int)(yyvsp[0].value); printf("%d MOD %d\n", (int)(yyvsp[-2].value), (int)(yyvsp[0].value)); }
-#line 1704 "calc.tab.c"
+#line 1712 "calc.tab.c"
     break;
 
   case 39:
-#line 195 "calc.y"
+#line 204 "calc.y"
                         { (yyval.value) = pow((yyvsp[-2].value), (yyvsp[0].value)); printf("%f ^ %f\n", (yyvsp[-2].value), (yyvsp[0].value)); }
-#line 1710 "calc.tab.c"
+#line 1718 "calc.tab.c"
     break;
 
   case 40:
-#line 196 "calc.y"
+#line 205 "calc.y"
                                                     { (yyval.value) = log10((yyvsp[-3].value))/log10((yyvsp[-1].value)); printf("Log de %f na base %f\n", (yyvsp[-3].value), (yyvsp[-1].value)); }
-#line 1716 "calc.tab.c"
+#line 1724 "calc.tab.c"
     break;
 
   case 41:
-#line 197 "calc.y"
+#line 206 "calc.y"
                                                      { (yyval.value) = pow((yyvsp[-3].value), 1/(yyvsp[-1].value)); printf("Raiz (indice: %f) de %f\n", (yyvsp[-1].value), (yyvsp[-3].value)); }
-#line 1722 "calc.tab.c"
+#line 1730 "calc.tab.c"
     break;
 
   case 42:
-#line 198 "calc.y"
+#line 207 "calc.y"
                              { (yyval.value) = -(yyvsp[0].value); printf("- %f\n", (yyvsp[0].value)); }
-#line 1728 "calc.tab.c"
+#line 1736 "calc.tab.c"
     break;
 
   case 43:
-#line 199 "calc.y"
+#line 208 "calc.y"
                                  { (yyval.value) = (yyvsp[-1].value); printf("(%f)\n", (yyvsp[-1].value)); }
-#line 1734 "calc.tab.c"
+#line 1742 "calc.tab.c"
     break;
 
 
-#line 1738 "calc.tab.c"
+#line 1746 "calc.tab.c"
 
       default: break;
     }
@@ -1966,7 +1974,7 @@ yyreturn:
 #endif
   return yyresult;
 }
-#line 201 "calc.y"
+#line 210 "calc.y"
 
 
 int yyerror(char const *s) {
