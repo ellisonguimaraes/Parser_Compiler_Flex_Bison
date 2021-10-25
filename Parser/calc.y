@@ -2,8 +2,7 @@
 
 /*
 Oque falta:
-	- PERGUNTAR AO PROFESSOR SOBRE NEG
-	- TESTAR
+	- PERGUNTAR AO PROFESSOR SOBRE NEG e %prec
 */
 
 /****************
@@ -54,11 +53,12 @@ extern int yylex (void);
 %left EQUAL DIFF
 %left LESS LESSOREQUAL MORE MOREOREQUAL
 %left ADD SUB
-%left MUL DIV MOD
+%left MUL DIV MOD 
+%left POW	//
 %left NUMBER 
 %left VAR
 %left NEG
-%left NOT
+%left NOT	//
 %left LBRACKET RBRACKET
 
 %define parse.error verbose
@@ -81,8 +81,13 @@ Line:
 	| LogicExpr EOL { printf("Logica: %f\n", $<value>1); };
 	| VIEWVARS EOL { ShowAllVar(); };
 
+Assign_Accept:
+	Expr {}
+	| RelExpr {}
+	| LogicExpr {};
+
 Assign:
-	VAR ATTR Expr {
+	VAR ATTR Assign_Accept {
 			$<value>$ = $<value>3;
 
 			// Busca na lista se o Lexeme já existe
@@ -95,7 +100,7 @@ Assign:
 				UpdateVar($<lexeme>1, $<value>3);
 			}
 		};
-	| VAR ADDATTR Expr {
+	| VAR ADDATTR Assign_Accept {
 			// Busca na lista se o Lexeme já existe
 			Variable* var = GetVar($<lexeme>1);
 
@@ -110,7 +115,7 @@ Assign:
 				$<value>$ = result;
 			}
 		};
-	| VAR SUBATTR Expr {
+	| VAR SUBATTR Assign_Accept {
 			Variable* var = GetVar($<lexeme>1);
 
 			if (var == NULL) {
@@ -122,7 +127,7 @@ Assign:
 				$<value>$ = result;
 			}
 		};
-	| VAR MULATTR Expr {
+	| VAR MULATTR Assign_Accept {
 			Variable* var = GetVar($<lexeme>1);
 
 			if (var == NULL) {
@@ -134,7 +139,7 @@ Assign:
 				$<value>$ = result;
 			}
 		};
-	| VAR DIVATTR Expr {
+	| VAR DIVATTR Assign_Accept {
 			Variable* var = GetVar($<lexeme>1);
 
 			if (var == NULL) {
@@ -146,7 +151,7 @@ Assign:
 				$<value>$ = result;
 			}
 		};
-	| VAR MODATTR Expr {
+	| VAR MODATTR Assign_Accept {
 			Variable* var = GetVar($<lexeme>1);
 
 			if (var == NULL) {
@@ -177,6 +182,7 @@ RelExpr:
 	| RelExpr MORE RelExpr { $<value>$ = $<value>1 > $<value>3; printf("%f > %f\n", $<value>1, $<value>3); };
 	| RelExpr LESSOREQUAL RelExpr { $<value>$ = $<value>1 <= $<value>3; printf("%f <= %f\n", $<value>1, $<value>3); };
 	| RelExpr LESS RelExpr { $<value>$ = $<value>1 < $<value>3; printf("%f < %f\n", $<value>1, $<value>3); };
+	| NOT RelExpr { $<value>$ = !$<value>2; printf("R!%f\n", $<value>2); };
 	| LBRACKET RelExpr RBRACKET { $<value>$ = $<value>2; printf("R(%f)\n", $<value>2); };
 
 Expr:
