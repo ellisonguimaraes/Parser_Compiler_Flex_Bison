@@ -49,32 +49,39 @@ extern int yydebug;
 # define YYTOKENTYPE
   enum yytokentype
   {
-    NUMBER = 258,
-    VAR = 259,
+    VIEWVARS = 258,
+    SEPARATOR = 259,
     ATTR = 260,
-    E = 261,
-    OR = 262,
-    NOT = 263,
-    EXCLUSIVEOR = 264,
-    IMPLICATION = 265,
-    ADD = 266,
-    SUB = 267,
-    MUL = 268,
-    DIV = 269,
-    POW = 270,
-    MORE = 271,
-    MOREOREQUAL = 272,
-    LESS = 273,
-    LESSOREQUAL = 274,
-    EQUAL = 275,
-    DIFF = 276,
-    LOG = 277,
-    SQRT = 278,
-    LBRACKET = 279,
-    RBRACKET = 280,
-    SEPARATOR = 281,
-    EOL = 282,
-    NEG = 283
+    ADDATTR = 261,
+    SUBATTR = 262,
+    MULATTR = 263,
+    DIVATTR = 264,
+    MODATTR = 265,
+    OR = 266,
+    E = 267,
+    EXCLUSIVEOR = 268,
+    IMPLICATION = 269,
+    EQUAL = 270,
+    DIFF = 271,
+    LESS = 272,
+    LESSOREQUAL = 273,
+    MORE = 274,
+    MOREOREQUAL = 275,
+    ADD = 276,
+    SUB = 277,
+    MUL = 278,
+    DIV = 279,
+    MOD = 280,
+    POW = 281,
+    LOG = 282,
+    SQRT = 283,
+    NOT = 284,
+    NUMBER = 285,
+    VAR = 286,
+    NEG = 287,
+    LBRACKET = 288,
+    RBRACKET = 289,
+    EOL = 290
   };
 #endif
 
@@ -82,12 +89,12 @@ extern int yydebug;
 #if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
 union YYSTYPE
 {
-#line 11 "calc.y"
+#line 23 "calc.y"
 
 	double value;
 	char lexeme[50];
 
-#line 91 "calc.tab.h"
+#line 98 "calc.tab.h"
 
 };
 typedef union YYSTYPE YYSTYPE;

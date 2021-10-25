@@ -5,6 +5,7 @@
 
 Variable* head = NULL;
 
+// Alocar um struct Variable e o retorna
 Variable* Allocate()
 {
     Variable* var = (Variable*)malloc(sizeof(Variable));
@@ -12,6 +13,7 @@ Variable* Allocate()
     return var;
 }
 
+// Percorre a lista encadeada procurando um Variable através do Lexeme
 Variable* GetVar(char lexeme[50])
 {
     Variable* current = head;
@@ -26,6 +28,7 @@ Variable* GetVar(char lexeme[50])
     return NULL;
 }
 
+// Adiciona uma nova Variable a lista encadeada (pelo HEAD)
 void AddVar(char lexeme[50], double value)
 {
     Variable* var = Allocate();
@@ -38,6 +41,7 @@ void AddVar(char lexeme[50], double value)
     head = var;
 }
 
+// Atualiza o value de um Variable (procurando pelo lexeme)
 void UpdateVar(char lexeme[50], double value)
 {
     Variable* current = head;
@@ -53,14 +57,23 @@ void UpdateVar(char lexeme[50], double value)
     }
 }
 
+// Mostra toda a lista encadeada de Variable
 void ShowAllVar()
 {
     Variable* current = head;
     int count = 1;
 
-    while(current != NULL){
-        printf("%d: <%s, %f>\n", count, current->lexeme, current->value);
-        current = current->next;
-        count++;
+    printf("\n***********************\nVariáveis do Sistema\n***********************\n");
+
+    if(current == NULL){
+        printf("Não há nenhuma variável armazenada. :( \n");
+    }else{
+        while(current != NULL){
+            printf("%d: <%s, %f>\n", count, current->lexeme, current->value);
+            current = current->next;
+            count++;
+        }
     }
+
+    printf("***********************\n\n");
 }
