@@ -1,9 +1,5 @@
 // Run by WSL (Ubuntu 20.04) terminal: make ; ./calc
 
-/*
-Oque falta:
-	- PERGUNTAR AO PROFESSOR SOBRE NEG e %prec
-*/
 
 /****************
 	PROLOGUE
